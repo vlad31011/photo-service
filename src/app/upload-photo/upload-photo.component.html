@@ -1,0 +1,12 @@
+  <a routerLink="/album">back</a>
+
+  <form id="upload" name="upload" enctype="multipart/form-data">
+    <select id="select-folder" class="form-control form-control-sm" name="folder">
+      <option *ngFor="let album of albums">{{album.title}}</option>
+    </select>
+    <div class="form-group" id="upload-images">
+      <label for="image">Upload file</label>
+      <input type="file" name="file" class="form-control-file" id="image" #uploadImage>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addFile()">Submit</button>
+    </form>

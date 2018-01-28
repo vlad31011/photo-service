@@ -1,0 +1,21 @@
+<div *ngIf="user_info">
+  <h3>Welcome, {{user_info[0].first_name}}.</h3>
+</div>
+
+<div *ngFor="let cover of albums">
+  <img class="covers" src="{{cover.thumb_src}}" width="100px" height="100px">
+  <a [routerLink]="['/album', cover.aid]">
+    <i class="fa fa-angle-double-right fa-2x" aria-hidden="true">{{cover.title}}</i>
+  </a>
+  <div>
+    Size: {{cover.size}}<br>
+    Created: {{cover.created * 1000 | date}}<br>
+    Last updated: {{cover.updated * 1000 | date}}
+  </div>
+</div>
+
+<div class="upload">
+  <a [routerLink]="['/upload']">upload</a>
+</div>
+
+

@@ -1,0 +1,10 @@
+<div *ngFor="let inf of info">
+
+<a [routerLink]="['/album', inf.album_id]">
+  <i class="fa fa-angle-left fa-3x" aria-hidden="true"></i>
+  <i class="fa fa-folder fa-2x" aria-hidden="true"></i>
+</a>
+
+<img class="info" src="{{inf.sizes[6].src}}" width="700" height="600">
+  Date add: {{inf.date | date}}<br>
+</div>
