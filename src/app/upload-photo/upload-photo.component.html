@@ -1,8 +1,10 @@
   <a routerLink="/album">back</a>
 
   <form id="upload" name="upload" enctype="multipart/form-data">
-    <select id="select-folder" class="form-control form-control-sm" name="folder">
-      <option *ngFor="let album of albums">{{album.title}}</option>
+    <select id="select-folder" class="form-control form-control-sm" name="folder" #selectFolder>
+      <option *ngFor="let album of albums" [value]="album.id">
+        {{album.title}}
+      </option>
     </select>
     <div class="form-group" id="upload-images">
       <label for="image">Upload file</label>

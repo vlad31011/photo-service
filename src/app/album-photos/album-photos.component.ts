@@ -13,7 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 
 export class AlbumPhotosComponent implements OnInit {
 
-  token: string = '0a1e6ed259335e9cb535b9a11f698062aff54079a71c890f999206798d2f3a27a9f4a6730f853c47e00a0';
+  token: string = '3b3724cf8a68b478a55bc544bf2028c969dd01549e5836a3c5fad68f66472beb9856f82820dc809e0d054';
   temp_albums:any;
   albums: any;
   temp_photos: any;
