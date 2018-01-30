@@ -5,7 +5,13 @@
 }
 
 #upload-images {
+  padding: 60px 120px;
   width: 500px;
   height: 200px;
   background-color: #FAFAFA;
+}
+
+#upload-submit {
+  width: 500px;
+  height: 50px;
 }

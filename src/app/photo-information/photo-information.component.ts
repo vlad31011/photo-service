@@ -1,6 +1,5 @@
 import {Component, OnInit} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {UserAlbumsService} from "../services/user-albums.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -10,20 +9,18 @@ import {ActivatedRoute} from "@angular/router";
 })
 
 export class PhotoInformationComponent implements OnInit{
-  private token: string = '3b3724cf8a68b478a55bc544bf2028c969dd01549e5836a3c5fad68f66472beb9856f82820dc809e0d054';
+  private token: string = 'c68fa9297f7620075c481c5487e8bda7d2bfbc4440dcd51815e483ead3f1824cc4d2aebf830e3168cdba3';
   owner_id: string;
   photo_id: string;
   temp_info: any;
   info: any;
 
-  constructor(private userAlbum: UserAlbumsService, private http: HttpClient, route: ActivatedRoute) {
-    route.url.subscribe(() => {
-      this.owner_id = route.snapshot.params.oid;
-      this.photo_id = route.snapshot.params.pid;
-
-      console.log(this.owner_id);
-      console.log(this.photo_id);
-    });
+  constructor(private http: HttpClient, route: ActivatedRoute) {
+    route.url
+      .subscribe(() => {
+        this.owner_id = route.snapshot.params.oid;
+        this.photo_id = route.snapshot.params.pid;
+      });
   }
 
   ngOnInit() {

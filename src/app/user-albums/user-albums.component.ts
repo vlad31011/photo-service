@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import 'rxjs/add/operator/map'
-import {UserAlbumsService} from "../services/user-albums.service"
-import {HttpClient} from "@angular/common/http";
+import { UserAlbumsService } from "../services/user-albums.service"
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'user-albums',
@@ -11,9 +11,9 @@ import {HttpClient} from "@angular/common/http";
 
 export class UserAlbumsComponent implements OnInit {
 
-  token: string = '3b3724cf8a68b478a55bc544bf2028c969dd01549e5836a3c5fad68f66472beb9856f82820dc809e0d054';
+  token: string = 'c68fa9297f7620075c481c5487e8bda7d2bfbc4440dcd51815e483ead3f1824cc4d2aebf830e3168cdba3';
   albums: any;
-  temp_albums:any;
+  temp_albums: any;
   user_info: any;
 
   constructor(private http: HttpClient, private userAlbum: UserAlbumsService) {}

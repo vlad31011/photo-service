@@ -1,19 +1,24 @@
-<a routerLink="/album">
-  <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
-  <i class="fa fa-folder fa-2x" aria-hidden="true"></i>
-</a>
-
-<div *ngFor="let photo of photos">
-  <img class="photos" [src]="lazyImage" [lazyLoad]="photo.src_big" width="400px" height="400px" placement="bottom" [ngbTooltip]="tipInfo">
-  <a [routerLink]="['/photo', photo.owner_id, photo.pid]">
-    <i class="fa fa-check" aria-hidden="true">Select</i>
+<div id="back" style="margin: 20px">
+  <a routerLink="/album">
+    <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+    <i class="fa fa-folder fa-2x" aria-hidden="true"></i>
   </a>
-  <ng-template #tipInfo>
-    Created: {{photo.created * 1000 | date}}<br>
-    Likes: {{photo.likes.count}}<br>
-    Comments: {{photo.comments.count}}
-  </ng-template>
 </div>
 
+<div class="row d-inline" *ngFor="let photo of photos">
+    <div class="thumbnail d-inline">
+        <img class="d-inline" id="image-position" [src]="lazyImage" [lazyLoad]="photo.src_big" width="350px" height="400px" placement="bottom" [ngbTooltip]="tipInfo">
+      <p class="d-inline">
+        <a [routerLink]="['/photo', photo.owner_id, photo.pid]" style="font-size: 1.5rem">
+          <i class="fa fa-check" aria-hidden="true">Select</i>
+        </a>
+      </p>
+        <ng-template #tipInfo>
+          Created: {{photo.created * 1000 | date}}<br>
+          Likes: {{photo.likes.count}}<br>
+          Comments: {{photo.comments.count}}
+        </ng-template>
+    </div>
+</div>
 
 

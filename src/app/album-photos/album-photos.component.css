@@ -1,5 +1,13 @@
-.photos{
-  margin-left: 50px;
-  margin-top: 15px;
+#image-position {
+  display: block;
+  border: 1px solid black;
+  margin-left: 125px;
+  margin-top: 55px;
   margin-bottom: 15px;
+}
+
+#back{
+  position: absolute;
+  display: block;
+  width: 100%;
 }

@@ -11,7 +11,7 @@ import {isUndefined} from "util";
 
 export class UploadPhotoComponent implements OnInit {
 
-  private token: string = '3b3724cf8a68b478a55bc544bf2028c969dd01549e5836a3c5fad68f66472beb9856f82820dc809e0d054';
+  private token: string = 'c68fa9297f7620075c481c5487e8bda7d2bfbc4440dcd51815e483ead3f1824cc4d2aebf830e3168cdba3';
   albums: any;
 
   temp_result: any;
@@ -27,12 +27,7 @@ export class UploadPhotoComponent implements OnInit {
   @ViewChild("selectFolder") selectFolder;
 
   addFile(){
-    this.http.get(`https://api.vk.com/method/photos.getUploadServer?album_id=${this.selectFolder.nativeElement.value}&v=5.52&access_token=${this.token}`)
-      .subscribe((data) => {
-        this.temp_result = data;
-        this.result = this.temp_result.response;
-        console.log(this.result.upload_url);
-      });
+
 
     let fi = this.fileInput.nativeElement;
     let sf = this.selectFolder.nativeElement;
@@ -46,7 +41,28 @@ export class UploadPhotoComponent implements OnInit {
       input.append("file", fileToUpload);
       input.append("folder", folderToUpload);
 
-        this.http.post(this.result.upload_url, input)
+      this.http.get(`https://api.vk.com/method/photos.getUploadServer?album_id=${this.selectFolder.nativeElement.value}&v=5.52&access_token=${this.token}`)
+        .subscribe((data) => {
+          this.temp_result = data;
+          this.result = this.temp_result.response;
+          console.log(this.result.upload_url);
+
+          this.http.post(this.result.upload_url, input)
+            .subscribe(res => {
+              this.temp_image = res;
+              console.log(this.temp_image);
+              this.http.get(`https://api.vk.com/method/photos.save?server=${this.temp_image.server}&photos_list=${this.temp_image.photos_list}&album_id=${this.selectFolder.nativeElement.value}&hash=${this.temp_image.hash}&v=5.52&access_token=${this.token}`)
+                .subscribe((data) => {
+                  this.image = data;
+
+                  console.log(this.image.response[0].photo_604);
+                  console.log(this.selectFolder.nativeElement.value);
+                })
+            });
+        });
+
+
+      /*  this.http.post(this.result.upload_url, input)
           .subscribe(res => {
             this.temp_image = res;
             console.log(this.temp_image);
@@ -57,7 +73,7 @@ export class UploadPhotoComponent implements OnInit {
                 console.log(this.image.response[0].photo_604);
                 console.log(this.selectFolder.nativeElement.value);
               })
-          });
+          });*/
     }
   }
 

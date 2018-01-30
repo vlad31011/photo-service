@@ -4,7 +4,6 @@ import {HttpClient} from "@angular/common/http";
 import 'rxjs/add/operator/map'
 import {ActivatedRoute} from "@angular/router";
 
-
 @Component({
   selector: 'user-photos',
   templateUrl: './album-photos.component.html',
@@ -13,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 
 export class AlbumPhotosComponent implements OnInit {
 
-  token: string = '3b3724cf8a68b478a55bc544bf2028c969dd01549e5836a3c5fad68f66472beb9856f82820dc809e0d054';
+  token: string = 'c68fa9297f7620075c481c5487e8bda7d2bfbc4440dcd51815e483ead3f1824cc4d2aebf830e3168cdba3';
   temp_albums:any;
   albums: any;
   temp_photos: any;
@@ -21,12 +20,11 @@ export class AlbumPhotosComponent implements OnInit {
   id: string;
   lazyImage:string = 'https://js.cx/lazyimg/1.gif';
 
-  offset:number = 100;
-
   constructor(private userAlbum: UserAlbumsService, private http: HttpClient, private route: ActivatedRoute) {
-        route.url.subscribe(() => {
-          this.id = route.snapshot.params.id;
-        });
+        route.url
+          .subscribe(() => {
+            this.id = route.snapshot.params.id;
+          });
         console.log(this.id);
   }
 

@@ -14,6 +14,11 @@ import { AlbumPhotosComponent } from "./album-photos/album-photos.component";
 import { UploadPhotoComponent } from "./upload-photo/upload-photo.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PhotoInformationComponent } from "./photo-information/photo-information.component";
+import { Ng2FilterPipeModule } from 'ng2-filter-pipe';
+import { FilterPipe } from './filter.pipe';
+
+
+
 
 const appRoutes: Routes =[
   { path: 'album', component: UserAlbumsComponent},
@@ -28,7 +33,8 @@ const appRoutes: Routes =[
     UserAlbumsComponent,
     AlbumPhotosComponent,
     PhotoInformationComponent,
-    UploadPhotoComponent
+    UploadPhotoComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -37,6 +43,7 @@ const appRoutes: Routes =[
     FormsModule,
     FontAwesomeModule,
     LazyLoadImageModule,
+    Ng2FilterPipeModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
